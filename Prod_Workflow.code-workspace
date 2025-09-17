@@ -1,19 +1,19 @@
 {
 	"folders": [
 		{
-			"path": "kanban-commons"
+			"path": "workflow-commons"
 		},
 		{
-			"path": "kanban-dao"
+			"path": "workflow-dao"
 		},
 		{
-			"path": "kanban-rest"
+			"path": "workflow-rest"
 		},
 		{
-			"path": "kanban-web"
+			"path": "workflow-web"
 		},
 		{
-			"path": "kanban-docker"
+			"path": "workflow-docker"
 		}
 	],
 	"settings": {},
