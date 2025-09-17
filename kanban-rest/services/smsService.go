@@ -18,7 +18,7 @@ import (
 const smSender string = "&sender=" + "VSSOTG"
 const smApiKey string = "apiKey=" + "xuS3OdikGk4-hwcRhJh4W8lJjJrLSWQQUnsD9Lj9Hx"
 const otpMessageTemplatePart1 string = "Your OTP for mobile number validation is "
-const comapnyNameForFooter string = " - Vedanshi Systems"
+const comapnyNameForFooter string = " - hi Systems"
 
 // SendOTP- sends OTP to provided mobile no
 // codeType flag- 1- OTP, 2- Reset Key and 3- Change password key

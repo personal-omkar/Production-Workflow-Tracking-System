@@ -10,11 +10,6 @@ services:
       - --providers.docker=true
       - --providers.docker.exposedByDefault=false
       - --api.insecure=true
-        #- --certificatesresolvers.leresolver.acme.caserver=https://acme-staging-v02.api.letsencrypt.org/directory
-        #- --certificatesresolvers.leresolver.acme.caserver=https://acme-v02.api.letsencrypt.org/directory
-        #- --certificatesresolvers.leresolver.acme.email=info@vedanshis.com
-        #- --certificatesresolvers.leresolver.acme.storage=/tls/acme.json
-        #- --certificatesresolvers.leresolver.acme.tlschallenge=true
     ports:
       - "80:80"
       - "443:443"
