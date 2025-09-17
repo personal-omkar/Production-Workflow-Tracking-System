@@ -1,6 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="29.25" height="29.25" viewBox="0 0 29.25 29.25">
-  <g id="info_icon" transform="translate(-1617.025 -24.375)">
-    <path id="Icon_ionic-md-information-circle" data-name="Icon ionic-md-information-circle" d="M18,3.375A14.625,14.625,0,1,0,32.625,18,14.632,14.632,0,0,0,18,3.375Z" transform="translate(1613.65 21)" fill="#cf7ac2"/>
-    <text id="i" transform="translate(1629 46)" fill="#fff" font-size="19" font-family="SegoeUI-Bold, Segoe UI" font-weight="700"><tspan x="0" y="0">i</tspan></text>
-  </g>
-</svg>

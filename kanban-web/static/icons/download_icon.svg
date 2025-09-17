@@ -1,9 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="61" height="45" viewBox="0 0 61 45">
-  <g id="download_icon" transform="translate(-1157 -504)">
-    <g id="Rectangle_409" data-name="Rectangle 409" transform="translate(1157 504)" fill="#fff" stroke="#cfcfcf" stroke-width="1">
-      <rect width="61" height="45" rx="3" stroke="none"/>
-      <rect x="0.5" y="0.5" width="60" height="44" rx="2.5" fill="none"/>
-    </g>
-    <path id="Icon_open-data-transfer-download" data-name="Icon open-data-transfer-download" d="M8.25,0V8.25H2.75L11,16.5l8.25-8.25h-5.5V0ZM0,19.25V22H22V19.25Z" transform="translate(1177 516)" fill="#cf7ac2"/>
-  </g>
-</svg>
