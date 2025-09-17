@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="59" height="41" viewBox="0 0 59 41">
+  <g id="Time_icon" transform="translate(-409 -764)">
+    <g id="Rectangle_36" data-name="Rectangle 36" transform="translate(409 764)" fill="#f4f5fb" stroke="#cfcfcf" stroke-width="1">
+      <rect width="59" height="41" rx="3" stroke="none"/>
+      <rect x="0.5" y="0.5" width="58" height="40" rx="2.5" fill="none"/>
+    </g>
+    <path id="Icon_material-access-time" data-name="Icon material-access-time" d="M14.711,3A11.722,11.722,0,1,0,26.445,14.722,11.717,11.717,0,0,0,14.711,3Zm.012,21.1A9.378,9.378,0,1,1,24.1,14.722,9.375,9.375,0,0,1,14.722,24.1Zm.586-15.239H13.55v7.033L19.7,19.587l.879-1.442-5.275-3.13Z" transform="translate(423.778 770)" fill="#cf7ac2"/>
+  </g>
+</svg>

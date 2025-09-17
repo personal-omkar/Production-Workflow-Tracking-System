@@ -1,0 +1,23 @@
+# Network prefix for all services, changing this might affect all the services.
+# Be careful when changing — all services might need to restart.
+# Must implement the change in the rest of the env variables as well.
+NETWORK_PREFIX=172.30.0
+BROKER=172.30.0:4222
+NATS_CLIENT_PORT=4222
+NATS_ROUTE_PORT=6222
+NATS_MONITOR_PORT=8222
+TRAEFIK_HTTP_PORT=80
+TRAEFIK_HTTPS_PORT=443
+DBHELPER_HOST=172.30.0.5
+DBHELPER_PORT=4100
+RESTSRV_HOST=172.30.0.6
+RESTSRV_PORT=4200
+DB_USER=vsys-kanban-user
+DB_PASSWORD=NewPassword123
+DB_NAME=kanban-master
+DB_HOST=172.30.0.4
+DB_PORT=5432
+WEBSRV_PORT=4300
+COOKIE_ID=01BX5ZZKBKACTAV9WEVGECCVK1
+DOMAIN=rubber.irpl.com
+HOME_URL=http://web:4300

@@ -1,0 +1,20 @@
+{
+	"folders": [
+		{
+			"path": "kanban-commons"
+		},
+		{
+			"path": "kanban-dao"
+		},
+		{
+			"path": "kanban-rest"
+		},
+		{
+			"path": "kanban-web"
+		},
+		{
+			"path": "kanban-docker"
+		}
+	],
+	"settings": {},
+}

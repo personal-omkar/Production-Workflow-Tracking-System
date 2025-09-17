@@ -1,0 +1,149 @@
+version: '3'
+networks:
+   rubber-net:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: "${NETWORK_PREFIX}.0/16"
+services:
+  nats:
+    image: nats:latest
+    container_name: irpl-rubber-kanban-nats
+    restart: always
+    ports:
+      - "${NATS_CLIENT_PORT}:4222"
+      - "${NATS_ROUTE_PORT}:6222"
+      - "${NATS_MONITOR_PORT}:8222"
+    command: ["-c", "/etc/nats/nats-server.conf"]
+    volumes:
+      - ./nats-server.conf:/etc/nats/nats-server.conf:ro
+    labels:
+      - "traefik.enable=false"
+    networks:
+      rubber-net:
+        ipv4_address: "${NETWORK_PREFIX}.2"
+  
+  traefik:
+    image: traefik:latest
+    container_name: irpl-rubber-kanban-traefik
+    command:
+      - "--api.insecure=true"
+      - "--providers.docker=true"
+      - "--entrypoints.web.address=:80"
+    ports:
+      - "${TRAEFIK_HTTP_PORT}:80"
+      - "${TRAEFIK_HTTPS_PORT}:443"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    networks:
+      rubber-net:
+        ipv4_address: "${NETWORK_PREFIX}.3"
+
+  db:
+    image: postgres:latest
+    container_name: irpl-rubber-kanban-db
+    restart: always
+    environment:
+      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+    volumes:
+      - ./data:/var/lib/postgresql/data
+      - ./init_db.sql:/docker-entrypoint-initdb.d/init_db.sql
+    labels:
+      - "traefik.enable=false"
+    networks:
+      rubber-net:
+        ipv4_address: "${NETWORK_PREFIX}.4"
+
+  dbhelper:
+    build: ../rubber-kanban-dao/
+    image: irpl.com/rubber-kanban-dao
+    container_name: irpl-rubber-kanban-dao
+    restart: always
+    depends_on:
+      - nats
+      - db
+    environment:
+      DB_HOST: ${DB_HOST}
+      DB_PORT: ${DB_PORT}
+      DB_USER: ${DB_USER}
+      DB_NAME: ${DB_NAME}
+      DB_PASSWORD: ${DB_PASSWORD}
+      DB_DATABASE: ${DB_NAME}
+      DBHELPER_PORT: ${DBHELPER_PORT}
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/timezone:ro
+    labels:
+      - "traefik.enable=false"
+    networks:
+       rubber-net:
+        ipv4_address: "${NETWORK_PREFIX}.5"
+
+  restsrv:
+    build: ../rubber-kanban-rest/
+    image: irpl.com/rubber-kanban-rest
+    container_name: irpl-rubber-kanban-rest
+    privileged: true
+    restart: always
+    depends_on:
+      - nats
+      - db
+      - dbhelper
+    environment:
+      DBHELPER_HOST: ${DBHELPER_HOST}
+      DBHELPER_PORT: ${DBHELPER_PORT}
+      RESTSRV_PORT: ${RESTSRV_PORT}
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/timezone:ro
+      - /usr/bin/mount:/usr/bin/mount:ro
+      - /usr/bin/umount:/usr/bin/umount:ro
+      - /usr/bin/lpstat:/usr/bin/lpstat:ro
+      - /usr/bin/lp:/usr/bin/lp:ro
+      - /lib/x86_64-linux-gnu:/lib/x86_64-linux-gnu:ro
+      - /usr/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:ro
+      - /lib64:/lib64:ro
+      - /run/cups:/run/cups:ro
+    labels:
+      - "traefik.enable=false"
+    networks:
+       rubber-net:
+        ipv4_address: "${NETWORK_PREFIX}.6"
+
+  web:
+    build: ../rubber-kanban-web/
+    image: irpl.com/rubber-kanban-web
+    container_name: irpl-rubber-kanban-web
+    depends_on:
+      - nats
+      - db
+      - dbhelper
+      - restsrv
+    restart: always
+    environment:
+      BROKER: ${BROKER}
+      RESTSRV_HOST: ${RESTSRV_HOST}
+      RESTSRV_PORT: ${RESTSRV_PORT}
+      DBHELPER_HOST: ${DBHELPER_HOST}
+      DBHELPER_PORT: ${DBHELPER_PORT}
+      WEBSRV_PORT: ${WEBSRV_PORT}
+      COOKIE_ID: ${COOKIE_ID}
+      DOMAIN: ${DOMAIN}
+      HOME_URL: ${HOME_URL}
+    volumes:
+      - /tmp:/tmp
+      - ./static:/go-rest-server/kanban-web/static
+      - /RUBBER:/RUBBER
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/timezone:ro
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.app2.rule=Host(`phoschem.irpl.com`)"
+      - "traefik.http.services.app2.loadbalancer.server.port=${WEBSRV_PORT}"
+    networks:
+       rubber-net:
+        ipv4_address: "${NETWORK_PREFIX}.7"
+
+   

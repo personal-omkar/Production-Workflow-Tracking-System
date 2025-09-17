@@ -1,0 +1,512 @@
+@daoURL = http://kanban.irpl.com:4100
+@restURL = http://kanban.irpl.com:4200
+@webURL = http://kanban.irpl.com:4300
+
+@cookie = 01BX5ZZKBKACTAV9WEVGECCVK1=MTc1MTI3NTc3NHxrZ1F6THdWX1ZEYUt1VFRwbFhGbWpnX1A5TTA3VHJ6UXlnaFpfU1ljT2QwY2pOOFBJdkIwfBD54lytzfnYpujwMZUOUFDxCW_BU4Hd2KyiYxt1Xmg6
+
+
+### Registration  
+POST http://0.0.0.0:4300/sign-up
+Content-Type: application/json
+
+{
+  "UserType": "admin",
+  "FirstName": "test1",
+  "LastName": "admin",
+  "Email": "admin1@testadmin.com",
+  "Password": "1234",
+  "ConfirmPassword": "1234",
+  "Code": ""
+}
+
+
+###Get Respones
+GET http://0.0.0.0:4300/get-user-details
+Content-Type: application/json
+Cookie: 01BX5ZZKBKACTAV9WEVGECCVK1=MTczNzUyODM0NnxWUm0tM2F6Mnd0RnJRLVpSbm1hOU9FbXZGcG5Oc3p2N1p0MDNNQ0ljMEpOUWFYdGxkQjBsVzdHdEVZR1pSRWlLUHZlSDMteXF81GlVa0FaTI-KyUOQ_6KKs7BZumDcqNrZMSIhLRKablQ
+
+
+###Get Orders details based on the condition
+POST http://0.0.0.0:4300/get-order-details
+Content-Type: application/json
+Cookie: 01BX5ZZKBKACTAV9WEVGECCVK1=MTczNzUyODM0NnxWUm0tM2F6Mnd0RnJRLVpSbm1hOU9FbXZGcG5Oc3p2N1p0MDNNQ0ljMEpOUWFYdGxkQjBsVzdHdEVZR1pSRWlLUHZlSDMteXF81GlVa0FaTI-KyUOQ_6KKs7BZumDcqNrZMSIhLRKablQ
+
+{
+
+}
+
+
+### Create API key
+POST http://0.0.0.0:4200/add-api-key
+Content-Type: application/json
+
+{
+  "name": "plc-team-1"
+}
+
+### Get API Key
+GET http://0.0.0.0:4200/get-api-key-by-param?key=key&value=01K0VQDYH12N11G0YRDDP2E7Z1
+
+###Update Orders details 
+POST http://0.0.0.0:4300/update-order-status
+Content-Type: application/json
+Cookie: 01BX5ZZKBKACTAV9WEVGECCVK1=MTczNzUyODM0NnxWUm0tM2F6Mnd0RnJRLVpSbm1hOU9FbXZGcG5Oc3p2N1p0MDNNQ0ljMEpOUWFYdGxkQjBsVzdHdEVZR1pSRWlLUHZlSDMteXF81GlVa0FaTI-KyUOQ_6KKs7BZumDcqNrZMSIhLRKablQ
+
+{
+"ID":"60",
+"Status":"approved"
+}
+
+###Update User details 
+POST http://0.0.0.0:4300/update-user-details
+Content-Type: application/json
+Cookie: 01BX5ZZKBKACTAV9WEVGECCVK1=MTczNzUyODM0NnxWUm0tM2F6Mnd0RnJRLVpSbm1hOU9FbXZGcG5Oc3p2N1p0MDNNQ0ljMEpOUWFYdGxkQjBsVzdHdEVZR1pSRWlLUHZlSDMteXF81GlVa0FaTI-KyUOQ_6KKs7BZumDcqNrZMSIhLRKablQ
+
+{
+"id": 12,
+"username":"test-demo-change4",
+"email": "test@v4.com",
+"password":"123",
+"roleId":3,
+"isactive":true
+}
+
+
+
+### Login  
+POST http://0.0.0.0:4300/sign-in
+Content-Type: application/json
+
+{
+  "username": "test@v50.com",
+  "password": "123"
+}
+
+
+### Get All Production line  lind-up data
+GET http://0.0.0.0:4300/get-production-line-items
+Content-Type: application/json
+Cookie: 01BX5ZZKBKACTAV9WEVGECCVK1=MTczNzUyODM0NnxWUm0tM2F6Mnd0RnJRLVpSbm1hOU9FbXZGcG5Oc3p2N1p0MDNNQ0ljMEpOUWFYdGxkQjBsVzdHdEVZR1pSRWlLUHZlSDMteXF81GlVa0FaTI-KyUOQ_6KKs7BZumDcqNrZMSIhLRKablQ
+
+
+
+### Get all data for production line by prod_line_id
+POST http://kanban.irpl.com:4300/get-production-line-processes
+Content-Type: application/json
+Cookie: 01BX5ZZKBKACTAV9WEVGECCVK1=MTczNzUyODM0NnxWUm0tM2F6Mnd0RnJRLVpSbm1hOU9FbXZGcG5Oc3p2N1p0MDNNQ0ljMEpOUWFYdGxkQjBsVzdHdEVZR1pSRWlLUHZlSDMteXF81GlVa0FaTI-KyUOQ_6KKs7BZumDcqNrZMSIhLRKablQ
+
+{
+  "line_no": 19
+}
+
+
+### Add production line API 
+POST  http://kanban.irpl.com:4300/add-production-line
+Content-Type: application/json
+Cookie: 01BX5ZZKBKACTAV9WEVGECCVK1=MTczNzUyODM0NnxWUm0tM2F6Mnd0RnJRLVpSbm1hOU9FbXZGcG5Oc3p2N1p0MDNNQ0ljMEpOUWFYdGxkQjBsVzdHdEVZR1pSRWlLUHZlSDMteXF81GlVa0FaTI-KyUOQ_6KKs7BZumDcqNrZMSIhLRKablQ
+
+{
+  "line_name": "dp",
+  "line_description": "bq",
+  "process_orders": [
+    {
+      "prod_process_id": "3",
+      "order": 1,
+      "group_name": ""
+    },
+    {
+      "prod_process_id": "4",
+      "order": 2,
+      "group_name": ""
+    },
+    {
+      "prod_process_id": "5",
+      "order": 3,
+      "group_name": ""
+    }
+  ]
+}
+
+
+### Get vendor by user ID 
+POST {{webURL}}/check-vendor-lot-limit
+Content-Type: application/json
+Cookie: 01BX5ZZKBKACTAV9WEVGECCVK1=MTczNzk2ODY5NXw2d3RlbkpRRjFnb1Z4X0t3OVRPdlM4aTBBS1RkYlJROWs4M1lIdkFNdlg4aFFhWXFZeW9KUDZtSm1heS1QOVF1M25fZ2RhRk5IZmFmR0pQa3zUJ_qk0JroECAlue2wR6bhX2gnqY5L0o_dhVwbgikvCA-KyUOQ_6KKs7BZumDcqNrZMSIhLRKablQ
+
+{
+  "ID": 301,
+  "NoOFLots": 100
+}
+
+
+### Get order details for history
+POST http://kanban.irpl.com:4300/get-all-details-for-order
+Content-Type: application/json
+Cookie: 01BX5ZZKBKACTAV9WEVGECCVK1=MTczNzk2ODY5NXw2d3RlbkpRRjFnb1Z4X0t3OVRPdlM4aTBBS1RkYlJROWs4M1lIdkFNdlg4aFFhWXFZeW9KUDZtSm1heS1QOVF1M25fZ2RhRk5IZmFmR0pQa3zUJ_qk0JroECAlue2wR6bhX2gnqY5L0o_dhVwbgikvCA-KyUOQ_6KKs7BZumDcqNrZMSIhLRKablQ
+
+{
+  "ID": 112
+}
+
+
+
+
+### Get order details for history
+POST http://kanban.irpl.com:4200/create-new-order-entry
+Content-Type: application/json
+Cookie: 01BX5ZZKBKACTAV9WEVGECCVK1=MTczNzk2ODY5NXw2d3RlbkpRRjFnb1Z4X0t3OVRPdlM4aTBBS1RkYlJROWs4M1lIdkFNdlg4aFFhWXFZeW9KUDZtSm1heS1QOVF1M25fZ2RhRk5IZmFmR0pQa3zUJ_qk0JroECAlue2wR6bhX2gnqY5L0o_dhVwbgikvCA-KyUOQ_6KKs7BZumDcqNrZMSIhLRKablQ
+
+{
+"CompoundCode": "1",
+"NoOFLots":12,
+"UserID":"2"
+}
+
+### Get order details for history
+POST http://kanban.irpl.com:4200/create-new-order-entry
+Content-Type: application/json
+Cookie: 01BX5ZZKBKACTAV9WEVGECCVK1=MTczNzk2ODY5NXw2d3RlbkpRRjFnb1Z4X0t3OVRPdlM4aTBBS1RkYlJROWs4M1lIdkFNdlg4aFFhWXFZeW9KUDZtSm1heS1QOVF1M25fZ2RhRk5IZmFmR0pQa3zUJ_qk0JroECAlue2wR6bhX2gnqY5L0o_dhVwbgikvCA-KyUOQ_6KKs7BZumDcqNrZMSIhLRKablQ
+
+{
+"CompoundCode": "1",
+"NoOFLots":22,
+"UserID":"2",
+"CellNo":"123V002HH-80"
+}
+
+### Get all productin line details
+GET http://kanban.irpl.com:4200/get-all-prod-line-data
+
+
+### Get all production processes details
+GET http://kanban.irpl.com:4200/get-all-production-process
+
+### Get production line details by line id
+POST http://kanban.irpl.com:4200/get-prod-line-by-param
+Content-Type: application/json
+Cookie: 01BX5ZZKBKACTAV9WEVGECCVK1=MTczNzk2ODY5NXw2d3RlbkpRRjFnb1Z4X0t3OVRPdlM4aTBBS1RkYlJROWs4M1lIdkFNdlg4aFFhWXFZeW9KUDZtSm1heS1QOVF1M25fZ2RhRk5IZmFmR0pQa3zUJ_qk0JroECAlue2wR6bhX2gnqY5L0o_dhVwbgikvCA-KyUOQ_6KKs7BZumDcqNrZMSIhLRKablQ
+
+{
+  "ID": 15
+}
+
+### Get production processes details by line id
+POST http://kanban.irpl.com:4200/get-prod-process-by-param
+Content-Type: application/json
+Cookie: 01BX5ZZKBKACTAV9WEVGECCVK1=MTczNzk2ODY5NXw2d3RlbkpRRjFnb1Z4X0t3OVRPdlM4aTBBS1RkYlJROWs4M1lIdkFNdlg4aFFhWXFZeW9KUDZtSm1heS1QOVF1M25fZ2RhRk5IZmFmR0pQa3zUJ_qk0JroECAlue2wR6bhX2gnqY5L0o_dhVwbgikvCA-KyUOQ_6KKs7BZumDcqNrZMSIhLRKablQ
+
+{
+  "ID": 15
+}
+
+### Get kb-root by ids
+POST {{webURL}}/delete-kbroot-by-ids
+Content-Type: application/json
+Cookie: {{cookie}}
+
+{
+  "ids": ["574"]
+}
+
+
+### /get-lineup-processes-by-lineid
+POST {{daoURL}}/get-lineup-processes-by-lineid
+Content-Type: application/json
+Cookie: {{cookie}}
+
+{
+  "ID": 15
+}
+
+### get all active compounds
+GET {{webURL}}/get-all-active-compounds
+Content-Type: application/json
+Cookie: {{cookie}}
+
+### Add compound / update compound (For add don't send ID , For update send ID)
+POST {{webURL}}/add-update-compound
+
+{
+  "ID": 22,
+  "CompoundName": "Sample Compound",
+  "Description": "This is a temporary test compound",
+  "CreatedBy": "admin",
+  "Status": false
+}
+
+
+### Get vendor by userID  -- use []m.Vendor to decode msg 
+GET {{webURL}}/get-vendor-by-userid?key=user_id&value=24
+Content-Type: application/json
+Cookie: {{cookie}}
+
+### GET all order for the vendor by Vendor code -- use []m.OrderEntry to decode msg 
+POST {{webURL}}/get-all-orders-by-vendor-code
+Content-Type: application/json
+Cookie: {{cookie}}
+
+{
+  "VendorCode": "V001"
+}
+
+### Get vendor details by vendor code -- use m.Vendor to decode msg 
+POST {{webURL}}/get-vendor-details-by-vendor-code
+Content-Type: application/json
+Cookie: {{cookie}}
+
+{
+  "VendorCode": "V001"
+}
+
+### Create New Stage
+POST {{webURL}}/create-new-stage
+Content-Type: application/json
+X-Custom-Userid: admin
+Cookie: {{cookie}}
+
+{
+  "name": "Oil",
+  "headers": ["C1", "D1"],
+  "active": true
+}
+
+### Get all Stage
+GET  {{webURL}}/get-all-stages
+Content-Type: application/json
+Cookie: {{cookie}}
+
+### Update Stage
+POST {{webURL}}/update-stage
+Content-Type: application/json
+X-Custom-Userid: admin
+Cookie: {{cookie}}
+
+{
+  "id" : 1,
+  "name": "Oil-Mix",
+  "headers": ["C1", "D1", "K1"],
+  "active": true
+}
+
+### delet Stage
+POST {{webURL}}/delete-stage
+Content-Type: application/json
+X-Custom-Userid: admin
+Cookie: {{cookie}}
+
+{
+  "id" : 9
+}
+
+### GET Stages by param
+GET {{webURL}}/get-stage-by-param?key=name&value=Oil-Mix
+Content-Type: application/json
+Cookie: {{cookie}}
+
+
+### GET Stages by header
+POST {{webURL}}/get-stages-by-header
+Content-Type: application/json
+Cookie: {{cookie}}
+
+{
+  "headers": ["C1"]
+}
+
+### Create new or update existing recipe
+POST {{restURL}}/create-new-or-update-existing-recipe
+Content-Type: application/json
+Cookie: {{cookie}}
+
+{
+  "CompoundName": "HH-80",
+  "CompoundCode": "1234",
+  "StageId": 1,
+  "Data":{ "difficulty": "easy-1",
+            "servings": "5",
+            "test": 4},
+  
+  "CreatedBy": "system"
+}
+
+### Delete recipe by ID
+GET {{restURL}}/get-recipe-by-data-key-and-value?value=4&key=test
+Content-Type: application/json
+Cookie: {{cookie}}
+
+### Create new or update existing recipe
+POST {{restURL}}/delete-recipe-by-id
+Content-Type: application/json
+Cookie: {{cookie}}
+
+{
+    "ID": 1
+}
+
+#### get all orders
+POST  {{webURL}}/get-order-details
+Content-Type: application/json
+Cookie: {{cookie}}
+
+{
+  "Criteria": {}
+}
+
+
+### Create new order entry
+POST {{webURL}}/create-new-order-entry
+Content-Type: application/json
+Cookie: {{cookie}}  
+
+{
+  "CompoundCode": "4",
+  "DemandDateTime": "2025-10-01T00:00:00Z",
+  "NoOFLots": 10,
+  "Note" : "regular",
+  "Status": "creating"
+}
+
+### Update existing order entry
+POST {{webURL}}/create-new-order-entry
+Content-Type: application/json
+Cookie: {{cookie}}  
+
+{
+  "CellNo" : "V002/284",
+  "CompoundCode": "4",
+  "DemandDateTime": "2025-10-01T00:00:00Z",
+  "NoOFLots": 14,
+  "Note" : "regular",
+  "Status": "creating"
+}
+
+
+### Check vendor lot limit
+POST {{webURL}}/check-vendor-lot-limit
+Content-Type: application/json
+Cookie: {{cookie}}  
+
+{
+  "CompoundCode": "4",
+  "DemandDateTime": "2023-10-01T00:00:00Z",
+  "NoOFLots": 10,
+  "Note" : "regular",
+  "Status": "pending"
+}
+
+### Delete order by ID
+DELETE {{webURL}}/delete-order-entry
+Content-Type: application/json
+Cookie: {{cookie}}  
+
+{
+  "ID": 260
+}
+
+// -----###### API endpoints used by the mobile application ######-----
+
+### Get All Pending Orders 
+GET {{webURL}}/api/v1/get-pending-orders
+Content-Type: application/json
+Cookie: {{cookie}}
+
+
+### Update Orders status to reject
+POST {{webURL}}/api/v1/reject-kanban-order
+Content-Type: application/json
+Cookie: {{cookie}}
+
+{
+"ID":"200"
+}
+
+###Approve order and create Kanban
+POST {{webURL}}/api/v1/approve-kanban-order
+Content-Type: application/json
+Cookie: {{cookie}}
+
+{
+"ID":"210"
+}
+
+### Get All Production line  lind-up data
+GET http://0.0.0.0:4300/api/v1/get-all-line-up-kanban
+Content-Type: application/json
+Cookie: 01BX5ZZKBKACTAV9WEVGECCVK1=MTczNzUyODM0NnxWUm0tM2F6Mnd0RnJRLVpSbm1hOU9FbXZGcG5Oc3p2N1p0MDNNQ0ljMEpOUWFYdGxkQjBsVzdHdEVZR1pSRWlLUHZlSDMteXF81GlVa0FaTI-KyUOQ_6KKs7BZumDcqNrZMSIhLRKablQ
+
+### Get  lineup kanban for line
+POST {{webURL}}/api/v1/get-kanban-by-production-line-id
+Content-Type: application/json
+Cookie: {{cookie}}
+
+{
+  "ID": 14
+}
+
+### Get Kanban for the vendor by vendor id
+POST {{webURL}}/api/v1/get-kanban-for-vendor
+Content-Type: application/json
+Cookie: {{cookie}}
+
+{
+  "ID" :3
+}
+
+### Get Kanban for all vendors
+GET  {{webURL}}/api/v1/get-kanban-for-all-vendor
+Content-Type: application/json
+Cookie: {{cookie}}
+
+###Get all user details
+GET {{webURL}}/get-user-details
+Content-Type: application/json
+Cookie: {{cookie}}
+
+### udpate User details 
+POST {{webURL}}/api/v1/update-user-status
+Content-Type: application/json
+Cookie: {{cookie}}
+
+{
+"email": "admin@admin.com",
+"isactive":true
+}
+
+### GET all Quality testing data
+GET {{webURL}}/api/v1/get-all-quality-testing-kanban
+Content-Type: application/json
+Cookie: {{cookie}}
+
+### GET kanban by vendor for quality testing
+POST {{webURL}}/api/v1/get-quality-testing-kanban-for-vendor
+Content-Type: application/json
+Cookie: {{cookie}}
+
+{
+  "id" :1
+}
+
+### GET all packing data
+GET {{webURL}}/api/v1/get-all-packing-kanban
+Content-Type: application/json
+Cookie: {{cookie}}
+
+### GET kanban by vendor for packing data
+POST {{webURL}}/api/v1/get-packing-kanban-for-vendor
+Content-Type: application/json
+Cookie: {{cookie}}
+
+{
+  "id" :3
+}
+
+### GET all order which are dispathed
+
+GET {{webURL}}/api/v1/get-order-details
+Content-Type: application/json
+Cookie: {{cookie}}
+
+
+### Test PLC Token Authentication
+GET {{webURL}}/plc/1/2/test
+Authorization: Bearer 01K0VQDYH12N11G0YRDDP2E7Z1
